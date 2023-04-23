@@ -1,0 +1,17 @@
+name = "glucose"
+version = "0.0.1"
+description = "The sweetest way to interact with the DOM."
+
+target = "javascript"
+
+repository = { type = "github", user = "endercheif", repo = "glucose" }
+# links = [{ title = "Website", href = "https://gleam.run" }]
+
+licences = ["MIT"]
+
+[javascript]
+typescript_declarations = true
+
+[dependencies]
+gleam_stdlib = "~> 0.27"
+
