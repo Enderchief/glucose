@@ -1,68 +1,66 @@
 import glucose/dom
 
-if javascript {
-  /// Select the first element matching the selector string
-  pub external fn query_selector(selector: String) -> dom.HTMLElement =
-    "" "document.querySelector"
+/// Select the first element matching the selector string
+@external(javascript, "", "document.querySelector")
+pub fn query_selector(selector selector: String) -> dom.HTMLElement
 
-  /// Select all elements matching the selector string
-  pub external fn query_selector_all(selector: String) -> List(dom.HTMLElement) =
-    "../ffi_doc.js" "query_selector_all"
+/// Select all elements matching the selector string
+@external(javascript, "../ffi_doc.js", "query_selector_all")
+pub fn query_selector_all(selector selector: String) -> List(dom.HTMLElement)
 
-  pub external fn append_child(node: dom.HTMLElement) -> dom.HTMLElement =
-    "" "document.appendChild"
+@external(javascript, "", "document.appendChild")
+pub fn append_child(node node: dom.HTMLElement) -> dom.HTMLElement
 
-  pub external fn doc() -> dom.Document =
-    "../ffi_doc.js" "doc"
+@external(javascript, "../ffi_doc.js", "doc")
+pub fn doc() -> dom.Document
 
-  pub external fn url() -> string =
-    "../ffi_doc.js" "url"
+@external(javascript, "../ffi_doc.js", "url")
+pub fn url() -> string
 
-  pub external fn body() -> dom.HTMLElement =
-    "../ffi_doc.js" "body"
+@external(javascript, "../ffi_doc.js", "body")
+pub fn body() -> dom.HTMLElement
 
-  pub external fn content_type() -> String =
-    "../ffi_doc.js" "contentType"
+@external(javascript, "../ffi_doc.js", "contentType")
+pub fn content_type() -> String
 
-  pub external fn document_uri() -> String =
-    "../ffi_doc.js" "document_uri"
+@external(javascript, "../ffi_doc.js", "document_uri")
+pub fn document_uri() -> String
 
-  pub external fn get_cookie() -> String =
-    "../ffi_doc.js" "get_cookie"
+@external(javascript, "../ffi_doc.js", "get_cookie")
+pub fn get_cookie() -> String
 
-  pub external fn set_cookie(v: String) -> Nil =
-    "../ffi_doc.js" "set_cookie"
+@external(javascript, "../ffi_doc.js", "set_cookie")
+pub fn set_cookie(v v: String) -> Nil
 
-  pub external fn head() -> dom.HTMLElement =
-    "../ffi_doc.js" "head"
+@external(javascript, "../ffi_doc.js", "head")
+pub fn head() -> dom.HTMLElement
 
-  pub external fn location() -> String =
-    "../ffi_doc.js" "location"
+@external(javascript, "../ffi_doc.js", "location")
+pub fn location() -> String
 
-  pub external fn set_location(url: String) -> Nil =
-    "../ffi_doc.js" "set_location"
+@external(javascript, "../ffi_doc.js", "set_location")
+pub fn set_location(url url: String) -> Nil
 
-  pub external fn ready_state() -> String =
-    "../ffi_doc.js" "ready_state"
+@external(javascript, "../ffi_doc.js", "ready_state")
+pub fn ready_state() -> String
 
-  pub external fn referrer() -> String =
-    "../ffi_doc.js" "referrer"
+@external(javascript, "../ffi_doc.js", "referrer")
+pub fn referrer() -> String
 
-  pub external fn title() -> String =
-    "../ffi_doc.js" "title"
+@external(javascript, "../ffi_doc.js", "title")
+pub fn title() -> String
 
-  pub external fn set_title(v: String) -> Nil =
-    "../ffi_doc.js" "set_title"
+@external(javascript, "../ffi_doc.js", "set_title")
+pub fn set_title(v v: String) -> Nil
 
-  pub external fn create_element(tag: String) -> dom.HTMLElement =
-    "" "document.createElement"
+@external(javascript, "", "document.createElement")
+pub fn create_element(tag tag: String) -> dom.HTMLElement
 
-  pub external fn create_text_node(data: String) -> dom.HTMLElement =
-    "" "document.createTextNode"
+@external(javascript, "", "document.createTextNode")
+pub fn create_text_node(data data: String) -> dom.HTMLElement
 
-  pub external fn get_selection() -> dom.HTMLElement =
-    "" "document.getSelection"
+@external(javascript, "", "document.getSelection")
+pub fn get_selection() -> dom.HTMLElement
 
-  pub external fn has_focus() -> Bool =
-    "" "document.hasFocus"
-}
+@external(javascript, "", "document.hasFocus")
+pub fn has_focus() -> Bool

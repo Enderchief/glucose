@@ -1,19 +1,23 @@
-if javascript {
-  pub external fn length() -> Int =
-    "../ffi_globals.js" "$ls_length"
+@target(javascript)
+@external(javascript, "../ffi_globals.js", "$ls_length")
+pub fn length() -> Int
 
-  pub external fn clear() -> Nil =
-    "" "localStorage.clear"
+@target(javascript)
+@external(javascript, "", "localStorage.clear")
+pub fn clear() -> Nil
 
-  pub external fn get_item(key: String) -> Result(String, Nil) =
-    "../ffi_globals.js" "$ls_get_item"
+@target(javascript)
+@external(javascript, "../ffi_globals.js", "$ls_get_item")
+pub fn get_item(key key: String) -> Result(String, Nil)
 
-  pub external fn key(n: Int) -> String =
-    "" "localStorage.key"
+@target(javascript)
+@external(javascript, "", "localStorage.key")
+pub fn key(n n: Int) -> String
 
-  pub external fn remove_item(key: String) -> Nil =
-    "" "localStorage.removeItem"
+@target(javascript)
+@external(javascript, "", "localStorage.removeItem")
+pub fn remove_item(key key: String) -> Nil
 
-  pub external fn set_item(key: String, value: String) -> Nil =
-    "" "localStorage.setItem"
-}
+@target(javascript)
+@external(javascript, "", "localStorage.setItem")
+pub fn set_item(key key: String, value value: String) -> Nil

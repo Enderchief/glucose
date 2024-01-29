@@ -1,8 +1,8 @@
 /// Reference to `document` in JavaScript.
-pub external type Document
+pub type Document
 
 /// `HTMLElement` type from JavaScript
-pub external type HTMLElement
+pub type HTMLElement
 
 /// Universal getter for JavaScript items
 ///
@@ -13,8 +13,8 @@ pub external type HTMLElement
 /// ```js
 /// console.log(elem["className"])
 /// // console.log(elem.className)
-pub external fn get(obj: a, attribute: String) -> t =
-  "../ffi_dom.js" "get"
+@external(javascript, "../ffi_dom.js", "get")
+pub fn get(obj obj: a, attribute attribute: String) -> t
 
 /// Update an attribute using an updater function
 ///
@@ -23,15 +23,19 @@ pub external fn get(obj: a, attribute: String) -> t =
 /// update(app, "innerText", fn (text) {
 ///     text <> " world"
 /// })
-pub external fn update(obj: a, attribute: String, updater: fn(b) -> b) -> Nil =
-  "../ffi_dom.js" "update"
+@external(javascript, "../ffi_dom.js", "update")
+pub fn update(
+  obj obj: a,
+  attribute attribute: String,
+  updater updater: fn(b) -> b,
+) -> Nil
 
 /// Set an attribute of an item
 ///
 /// ```gleam
 /// set(app, "innerHTML", "<h1>Hello Gleam!</h1>")
-pub external fn set(obj: a, attribute: String, value: b) -> Nil =
-  "../ffi_dom.js" "set"
+@external(javascript, "../ffi_dom.js", "set")
+pub fn set(obj obj: a, attribute attribute: String, value value: b) -> Nil
 
 /// Add an event listener to an element
 ///
@@ -39,26 +43,29 @@ pub external fn set(obj: a, attribute: String, value: b) -> Nil =
 /// event(btn, "click", fn () {
 ///     io.println("pressed!")   
 /// })
-pub external fn event(
-  element: HTMLElement,
-  event: String,
-  handler: fn() -> Nil,
-) -> Nil =
-  "../ffi_dom.js" "event"
+@external(javascript, "../ffi_dom.js", "event")
+pub fn event(
+  element element: HTMLElement,
+  event event: String,
+  handler handler: fn() -> Nil,
+) -> Nil
 
-if javascript {
-  pub external fn clear_interval(id: Int) -> Nil =
-    "" "clearInterval"
+@target(javascript)
+@external(javascript, "", "clearInterval")
+pub fn clear_interval(id id: Int) -> Nil
 
-  pub external fn clear_timeout(id: Int) -> Nil =
-    "" "clearTimeout"
+@target(javascript)
+@external(javascript, "", "clearTimeout")
+pub fn clear_timeout(id id: Int) -> Nil
 
-  pub external fn set_interval(fn() -> Nil, Float) -> Int =
-    "" "setInterval"
+@target(javascript)
+@external(javascript, "", "setInterval")
+pub fn set_interval(a: fn() -> Nil, b: Float) -> Int
 
-  pub external fn set_timeout(fn() -> Nil, Float) -> Int =
-    "" "setTimeout"
+@target(javascript)
+@external(javascript, "", "setTimeout")
+pub fn set_timeout(a: fn() -> Nil, b: Float) -> Int
 
-  pub external fn inner_size() -> #(Float, Float) =
-    "../ffi_globals.js" "$inner_size"
-}
+@target(javascript)
+@external(javascript, "../ffi_globals.js", "$inner_size")
+pub fn inner_size() -> #(Float, Float)

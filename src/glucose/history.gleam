@@ -1,22 +1,20 @@
-if javascript {
-  pub external fn back() -> Nil =
-    "" "history.back"
+@external(javascript, "", "history.back")
+pub fn back() -> Nil
 
-  pub external fn forward() -> Nil =
-    "" "history.forward"
+@external(javascript, "", "history.forward")
+pub fn forward() -> Nil
 
-  pub external fn go(delta: Int) -> Nil =
-    "" "history.go"
+@external(javascript, "", "history.go")
+pub fn go(delta delta: Int) -> Nil
 
-  pub external fn push_state(data: a, unused: String, url: String) -> Nil =
-    "" "history.pushState"
+@external(javascript, "", "history.pushState")
+pub fn push_state(data data: a, unused unused: String, url url: String) -> Nil
 
-  pub external fn replace_state() -> Nil =
-    "" "history.replaceState"
+@external(javascript, "", "history.replaceState")
+pub fn replace_state() -> Nil
 
-  pub external fn length() -> Int =
-    "../ffi_globals.js" "$h_length"
+@external(javascript, "../ffi_globals.js", "$h_length")
+pub fn length() -> Int
 
-  pub external fn state() -> String =
-    "../ffi_globals.js" "$h_state"
-}
+@external(javascript, "../ffi_globals.js", "$h_state")
+pub fn state() -> String
