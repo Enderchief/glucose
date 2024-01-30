@@ -1,4 +1,4 @@
-import { List, Ok, Error } from './gleam.mjs';
+import { Error, List, Ok } from "./gleam.mjs";
 
 export function query_selector(selectors) {
   const node = document.querySelector(selectors);
@@ -78,9 +78,9 @@ export function create_text_node(tag) {
 export function get_selection() {
   const node = document.getSelection();
   if (node) return new Ok(node);
-  return new Error(node);
+  return new Error();
 }
 
 export function has_focus() {
-  return document.hasFocus()
+  return document.hasFocus();
 }

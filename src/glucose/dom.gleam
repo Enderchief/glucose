@@ -1,3 +1,5 @@
+import gleam/dynamic.{type Dynamic}
+
 /// Reference to `document` in JavaScript.
 pub type Document
 
@@ -13,8 +15,8 @@ pub type HTMLElement
 /// ```js
 /// console.log(elem["className"])
 /// // console.log(elem.className)
-@external(javascript, "../ffi_dom.js", "get")
-pub fn get(obj obj: a, attribute attribute: String) -> t
+@external(javascript, "../dom.ffi.mjs", "get")
+pub fn get(obj obj: a, attribute attribute: String) -> Dynamic
 
 /// Update an attribute using an updater function
 ///
@@ -23,7 +25,7 @@ pub fn get(obj obj: a, attribute attribute: String) -> t
 /// update(app, "innerText", fn (text) {
 ///     text <> " world"
 /// })
-@external(javascript, "../ffi_dom.js", "update")
+@external(javascript, "../dom.ffi.mjs", "update")
 pub fn update(
   obj obj: a,
   attribute attribute: String,
@@ -34,38 +36,39 @@ pub fn update(
 ///
 /// ```gleam
 /// set(app, "innerHTML", "<h1>Hello Gleam!</h1>")
-@external(javascript, "../ffi_dom.js", "set")
+@external(javascript, "../dom.ffi.mjs", "set")
 pub fn set(obj obj: a, attribute attribute: String, value value: b) -> Nil
 
 /// Add an event listener to an element
 ///
 /// ```gleam
-/// event(btn, "click", fn () {
+/// let remove_event = event(btn, "click", fn () {
 ///     io.println("pressed!")   
 /// })
+/// remove_event() // removes event listener
 @external(javascript, "../ffi_dom.js", "event")
 pub fn event(
   element element: HTMLElement,
   event event: String,
   handler handler: fn() -> Nil,
-) -> Nil
+) -> fn() -> Nil
 
 @target(javascript)
-@external(javascript, "", "clearInterval")
+@external(javascript, "../globals.ffi.mjs", "clear_interval")
 pub fn clear_interval(id id: Int) -> Nil
 
 @target(javascript)
-@external(javascript, "", "clearTimeout")
+@external(javascript, "../globals.ffi.mjs", "clear_timeout")
 pub fn clear_timeout(id id: Int) -> Nil
 
 @target(javascript)
-@external(javascript, "", "setInterval")
+@external(javascript, "../globals.ffi.mjs", "set_interval")
 pub fn set_interval(a: fn() -> Nil, b: Float) -> Int
 
 @target(javascript)
-@external(javascript, "", "setTimeout")
+@external(javascript, "../globals.ffi.mjs", "set_timeout")
 pub fn set_timeout(a: fn() -> Nil, b: Float) -> Int
 
 @target(javascript)
-@external(javascript, "../ffi_globals.js", "$inner_size")
+@external(javascript, "../ffi_globals.js", "inner_size")
 pub fn inner_size() -> #(Float, Float)

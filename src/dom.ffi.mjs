@@ -1,4 +1,6 @@
 // @ts-check
+// @ts-expect-error
+import { Error, Ok } from "./gleam.mjs";
 
 /**
  * @param {string} t
@@ -17,7 +19,8 @@ function toCamel(t) {
  * @param {string} attribute
  */
 export function get(obj, attribute) {
-  return obj[attribute];
+  if (typeof obj !== "object") return new Error();
+  return new Ok(obj[attribute]);
 }
 
 /**
@@ -26,6 +29,7 @@ export function get(obj, attribute) {
  * @param {(value: any) => any} updater
  */
 export function update(obj, prop, updater) {
+  if (typeof obj !== "object") return new Error();
   obj[prop] = updater(obj[prop]);
 }
 
@@ -35,7 +39,9 @@ export function update(obj, prop, updater) {
  * @param {any} value
  */
 export function set(obj, prop, value) {
+  if (typeof obj !== "object") return new Error();
   obj[prop] = value;
+  return new Ok();
 }
 
 /**
@@ -45,4 +51,7 @@ export function set(obj, prop, value) {
  */
 export function event(elem, event_name, handler) {
   elem.addEventListener(event_name, handler);
+  return () => {
+    elem.removeEventListener(event_name, handler);
+  };
 }

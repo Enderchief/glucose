@@ -8,7 +8,7 @@ pub fn query_selector(selector selector: String) -> Result(dom.HTMLElement, Nil)
 @external(javascript, "../doc.ffi.mjs", "query_selector_all")
 pub fn query_selector_all(selector selector: String) -> List(dom.HTMLElement)
 
-@external(javascript, "", "document.appendChild")
+@external(javascript, "../doc.ffi.mjs", "append_child")
 pub fn append_child(node node: dom.HTMLElement) -> dom.HTMLElement
 
 @external(javascript, "../doc.ffi.mjs", "doc")
@@ -60,7 +60,7 @@ pub fn create_element(tag tag: String) -> dom.HTMLElement
 pub fn create_text_node(data data: String) -> dom.HTMLElement
 
 @external(javascript, "../doc.ffi.mjs", "get_selection")
-pub fn get_selection() -> dom.HTMLElement
+pub fn get_selection() -> Result(dom.HTMLElement, Nil)
 
 @external(javascript, "../doc.ffi.mjs", "has_focus")
 pub fn has_focus() -> Bool

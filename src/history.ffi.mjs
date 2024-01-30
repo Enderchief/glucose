@@ -1,4 +1,3 @@
-
 export const back = history.back.bind(history);
 export const forward = history.forward.bind(history);
 export const go = history.go.bind(history);
