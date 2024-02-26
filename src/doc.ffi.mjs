@@ -75,6 +75,10 @@ export function create_text_node(tag) {
   return document.createTextNode(tag);
 }
 
+export function append_child(node) {
+  return document.appendChild(node);
+}
+
 export function get_selection() {
   const node = document.getSelection();
   if (node) return new Ok(node);
