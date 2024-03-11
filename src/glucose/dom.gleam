@@ -46,7 +46,7 @@ pub fn set(obj obj: a, attribute attribute: String, value value: b) -> Nil
 ///     io.println("pressed!")   
 /// })
 /// remove_event() // removes event listener
-@external(javascript, "../ffi_dom.js", "event")
+@external(javascript, "../dom.ffi.mjs", "event")
 pub fn event(
   element element: HTMLElement,
   event event: String,
@@ -70,5 +70,5 @@ pub fn set_interval(a: fn() -> Nil, b: Float) -> Int
 pub fn set_timeout(a: fn() -> Nil, b: Float) -> Int
 
 @target(javascript)
-@external(javascript, "../ffi_globals.js", "inner_size")
+@external(javascript, "../globals.ffi.mjs", "inner_size")
 pub fn inner_size() -> #(Float, Float)
